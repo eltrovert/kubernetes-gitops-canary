@@ -17,11 +17,11 @@ metadata:
 spec:
   filterTags:
     extract: $ts
-    pattern: '^[a-fA-F0-9]{40}$'
+    pattern: '^\d{18}$'
   imageRepositoryRef:
-    name: monolith
+    name: backend
   policy:
-    alphabetical:
+    numerical:
       order: asc
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1

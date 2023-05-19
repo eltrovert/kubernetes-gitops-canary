@@ -17,18 +17,18 @@ metadata:
 spec:
   filterTags:
     extract: $ts
-    pattern: '^[a-fA-F0-9]{40}$'
+    pattern: '^\d{18}$'
   imageRepositoryRef:
     name: backend
   policy:
-    alphabetical:
+    numerical:
       order: asc
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: backend
-  namespace: flux-system
+  namespace: 
 spec:
   chart:
     spec:
