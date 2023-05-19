@@ -39,5 +39,5 @@ spec:
   values:
     image:
       repository: "asia.gcr.io/xthanos/python-check-ip" # {"$imagepolicy": "flux-system:backend:name"}
-      tag: "20230519132346" # {"$imagepolicy": "flux-system:backend:tag"}
+      tag: "20230519142023" # {"$imagepolicy": "flux-system:backend:tag"}
     replicaCount: 1
