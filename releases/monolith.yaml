@@ -15,9 +15,6 @@ metadata:
   name: monolith
   namespace: flux-system
 spec:
-  filterTags:
-    extract: $ts
-    pattern: '^\d{14}$'
   imageRepositoryRef:
     name: backend
   policy:
