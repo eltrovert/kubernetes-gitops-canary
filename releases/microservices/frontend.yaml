@@ -17,7 +17,7 @@ metadata:
 spec:
   filterTags:
     extract: $ts
-    pattern: '^\d{18}$'
+    pattern: '^\d{14}$'
   imageRepositoryRef:
     name: backend
   policy:
