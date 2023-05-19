@@ -32,7 +32,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: ./charts/fitaja/frontend
+      chart: ./charts/microservices/frontend
       sourceRef:
         kind: GitRepository
         name: flux-system
