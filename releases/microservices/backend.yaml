@@ -4,7 +4,7 @@ metadata:
   name: backend
   namespace: flux-system
 spec:
-  image: gcr.io/xthanos/python-check-ip
+  image: asia.gcr.io/xthanos/python-check-ip
   interval: 30s
   secretRef:
     name: gcr-json-key
@@ -28,7 +28,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: backend
-  namespace: gitops-el
+  namespace: gitops-app
 spec:
   chart:
     spec:
@@ -41,6 +41,6 @@ spec:
   interval: 30s
   values:
     image:
-      repository: "gcr.io/xthanos/python-check-ip" # {"$imagepolicy": "flux-system:backend:name"}
-      tag: "b0dffc9f0df240cf2bdacaeb8e42d2d47d8e89e1" # {"$imagepolicy": "flux-system:backend:tag"}
+      repository: "asia.gcr.io/xthanos/python-check-ip" # {"$imagepolicy": "flux-system:backend:name"}
+      tag: "20230519132346" # {"$imagepolicy": "flux-system:backend:tag"}
     replicaCount: 1
