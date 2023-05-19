@@ -1,0 +1,46 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: gitops-el
+  namespace: flux-system
+spec:
+  image: gcr.io/xthanos/python-check-ip
+  interval: 30s
+  secretRef:
+    name: gcr-json-key
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: gitops-el
+  namespace: flux-system
+spec:
+  filterTags:
+    extract: $ts
+    pattern: '^[a-fA-F0-9]{40}$'
+  imageRepositoryRef:
+    name: gitops-el
+  policy:
+    alphabetical:
+      order: asc
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitops-el
+  namespace: gitops-el
+spec:
+  chart:
+    spec:
+      chart: ./charts/gitops-el
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 1m0s
+  interval: 30s
+  values:
+    image:
+      repository: "gcr.io/xthanos/python-check-ip" # {"$imagepolicy": "flux-system:gitops-el:name"}
+      tag: "b0dffc9f0df240cf2bdacaeb8e42d2d47d8e89e1" # {"$imagepolicy": "flux-system:gitops-el:tag"}
+    replicaCount: 1
