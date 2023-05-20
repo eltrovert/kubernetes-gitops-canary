@@ -46,3 +46,6 @@ spec:
       enabled: true
       minReplicas: 1
       maxReplicas: 1
+
+    ingress:
+      enabled: enable
