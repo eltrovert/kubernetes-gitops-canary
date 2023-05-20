@@ -37,11 +37,11 @@ spec:
     targetPort: 80
     portDiscovery: true
   
+  skipAnalysis: true
   analysis:
     interval: 1s
     iterations: 1
     threshold: 10
-    skipAnalysis: true
     match:
       # curl -H 'X-Canary: insider' http://app.example.com
       - headers:
