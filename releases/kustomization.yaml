@@ -1,5 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+- flagger-system/namespace.yaml
+- flagger-system/flagger.yaml
+- flagger-system/flagger-loadtester.yaml
 - monolith.yaml
 - microservices
