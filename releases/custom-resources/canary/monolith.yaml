@@ -1,0 +1,67 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: monolith
+  namespace: gitops-apps
+spec:
+  provider: nginx
+
+  # Deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: monolith
+  
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta2
+    kind: HorizontalPodAutoscaler
+    name: monolith
+    primaryScalerReplicas:
+      minReplicas: 3
+      maxReplicas: 3
+
+  # Ingress reference
+  ingressRef:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    name: monolith
+
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 60
+
+  service:
+    # ClusterIP port number
+    port: 80
+    # container port number or name
+    targetPort: 80
+    portDiscovery: true
+  
+  analysis:
+    interval: 1s
+    iterations: 1
+    threshold: 10
+    skipAnalysis: true
+    match:
+      # curl -H 'X-Canary: insider' http://app.example.com
+      - headers:
+          x-canary:
+            exact: "insider"
+      # curl -b 'canary=always' http://app.example.com
+      - headers:
+          cookie:
+            exact: "canary"
+    # NGINX Prometheus checks
+    metrics: []
+    webhooks:
+      - name: "check-rollback"
+        type: rollback
+        url: https://slack.theojust.my.id/gate/rollback/check
+      - name: "promotion-confirmation"
+        type: confirm-promotion
+        url: https://slack.theojust.my.id/gate/promotion/check
+      - name: "send-to-slack"
+        type: event
+        url: https://slack.theojust.my.id/slack
+        metadata:
+          source: "canary"

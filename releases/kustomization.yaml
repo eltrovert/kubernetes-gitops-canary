@@ -7,3 +7,4 @@ resources:
 - flagger-system/flagger-loadtester.yaml
 - monolith.yaml
 - microservices
+- custom-resources
