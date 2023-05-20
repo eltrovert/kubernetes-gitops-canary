@@ -2,7 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: monolith
-  namespace: gitops-apps
+  namespace: gitops-app
 spec:
   provider: nginx
 
