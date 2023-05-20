@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 # - microservices/backend.yaml
 # - microservices/frontend.yaml
-# - monolith.yaml
+- monolith.yaml
