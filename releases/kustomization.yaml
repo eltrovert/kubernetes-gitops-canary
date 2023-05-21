@@ -5,6 +5,7 @@ resources:
 - flagger-system/namespace.yaml
 - flagger-system/flagger.yaml
 - flagger-system/flagger-loadtester.yaml
+- mysql/mysql.yaml
 - monolith.yaml
 - microservices
 - custom-resources
