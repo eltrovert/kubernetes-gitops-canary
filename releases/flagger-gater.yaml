@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: flagger-gater
-  namespace: flux-system
+  namespace: gitops-app
 spec:
   image: asia.gcr.io/xthanos/flagger-gater
   interval: 30s
@@ -13,7 +13,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: flagger-gater
-  namespace: flux-system
+  namespace: gitops-app
 spec:
   imageRepositoryRef:
     name: backend
@@ -33,7 +33,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: flux-system
-        namespace: flux-system
+        namespace: gitops-app
       interval: 1m0s
   interval: 30s
   values:
