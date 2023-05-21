@@ -1,0 +1,58 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: flagger-gater
+  namespace: flux-system
+spec:
+  image: asia.gcr.io/xthanos/flagger-gater
+  interval: 30s
+  secretRef:
+    name: gcr-json-key
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: flagger-gater
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: backend
+  policy:
+    numerical:
+      order: asc
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flagger-gater
+  namespace: gitops-app
+spec:
+  chart:
+    spec:
+      chart: ./charts/flagger-gater
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 1m0s
+  interval: 30s
+  values:
+    image:
+      repository: "asia.gcr.io/xthanos/flagger-gater" # {"$imagepolicy": "flux-system:flagger-gater:name"}
+      tag: "10000000000001" # {"$imagepolicy": "flux-system:flagger-gater:tag"}
+    replicaCount: 1
+    ingress:
+      enabled: true
+      className: "nginx"
+      annotations: {}
+      hosts:
+        - host: flagger-gater.theojust.my.id
+          http:
+            paths:
+              - backend:
+                  service:
+                    name: flagger-gater
+                    port:
+                      name: http
+                path: /
+                pathType: ImplementationSpecific
