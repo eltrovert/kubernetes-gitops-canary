@@ -1,0 +1,67 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: nodejs-header-blocker
+  namespace: gitops-app
+spec:
+  provider: nginx
+
+  # Deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nodejs-header-blocker
+  
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta2
+    kind: HorizontalPodAutoscaler
+    name: nodejs-header-blocker
+    primaryScalerReplicas:
+      minReplicas: 2
+      maxReplicas: 2
+
+  # Ingress reference
+  ingressRef:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    name: nodejs-header-blocker
+
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 60
+
+  service:
+    # ClusterIP port number
+    port: 80
+    # container port number or name
+    targetPort: 80
+    portDiscovery: true
+  
+  # skipAnalysis: true
+  analysis:
+    interval: 1s
+    iterations: 1
+    threshold: 10
+    match:
+      # curl -H 'X-Canary: insider' http://app.example.com
+      - headers:
+          x-canary:
+            exact: "insider"
+      # curl -b 'canary=always' http://app.example.com
+      - headers:
+          cookie:
+            exact: "canary"
+    # NGINX Prometheus checks
+    metrics: []
+    webhooks:
+      - name: "check-rollback"
+        type: rollback
+        url: http://flagger-gater.gitops-app/api/canary/nodejs-header-blocker/gate/rollback/check
+      - name: "promotion-confirmation"
+        type: confirm-promotion
+        url: http://flagger-gater.gitops-app/api/canary/nodejs-header-blocker/gate/promotion/check
+      - name: "send-to-slack"
+        type: event
+        url: http://slack-handler.gitops-app/slack
+        metadata:
+          source: "canary"

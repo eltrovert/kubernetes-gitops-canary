@@ -4,3 +4,4 @@ resources:
 # - microservices/backend.yaml
 # - microservices/frontend.yaml
 - monolith.yaml
+- nodejs-header-blocker.yaml
