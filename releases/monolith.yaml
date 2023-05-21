@@ -39,7 +39,7 @@ spec:
   values:
     image:
       repository: "asia.gcr.io/xthanos/python-check-ip" # {"$imagepolicy": "flux-system:monolith:name"}
-      tag: "20230521083452" # {"$imagepolicy": "flux-system:monolith:tag"}
+      tag: "20230521084524" # {"$imagepolicy": "flux-system:monolith:tag"}
     # The canary replica count
     autoscaling:
       enabled: true
