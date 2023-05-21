@@ -16,7 +16,7 @@ metadata:
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: backend
+    name: monolith
   policy:
     numerical:
       order: asc
