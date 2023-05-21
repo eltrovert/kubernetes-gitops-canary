@@ -56,10 +56,10 @@ spec:
     webhooks:
       - name: "check-rollback"
         type: rollback
-        url: https://flagger-gater.theojust.my.id/canary/monolith/gate/promotion/check
+        url: http://flagger-gater.gitops-app/canary/monolith/gate/rollback/check
       - name: "promotion-confirmation"
         type: confirm-promotion
-        url: https://flagger-gater.theojust.my.id/canary/monolith/gate/promotion/check
+        url: http://flagger-gater.gitops-app/canary/monolith/gate/promotion/check
       - name: "send-to-slack"
         type: event
         url: https://slack-handler.theojust.my.id/slack
