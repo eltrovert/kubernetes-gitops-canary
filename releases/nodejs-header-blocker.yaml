@@ -39,7 +39,7 @@ spec:
   values:
     image:
       repository: "asia.gcr.io/xthanos/nodejs-header-blocker" # {"$imagepolicy": "flux-system:nodejs-header-blocker:name"}
-      tag: "10000000000002" # {"$imagepolicy": "flux-system:nodejs-header-blocker:tag"}
+      tag: "10000000000003" # {"$imagepolicy": "flux-system:nodejs-header-blocker:tag"}
     autoscaling:
       enabled: true
       minReplicas: 1
