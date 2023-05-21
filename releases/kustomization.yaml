@@ -9,5 +9,5 @@ resources:
 - monolith.yaml
 - flagger-gater.yaml
 - slack-handler.yaml
-- microservices
+# - microservices
 - custom-resources
