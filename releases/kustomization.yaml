@@ -7,5 +7,6 @@ resources:
 - flagger-system/flagger-loadtester.yaml
 - mysql/mysql.yaml
 - monolith.yaml
+- flagger-gater.yaml
 - microservices
 - custom-resources
