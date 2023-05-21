@@ -62,6 +62,6 @@ spec:
         url: http://flagger-gater.gitops-app/canary/monolith/gate/promotion/check
       - name: "send-to-slack"
         type: event
-        url: https://slack-handler.theojust.my.id/slack
+        url: http://slack-handler.gitops-app/slack
         metadata:
           source: "canary"
