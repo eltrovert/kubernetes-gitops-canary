@@ -39,7 +39,7 @@ spec:
   values:
     image:
       repository: "asia.gcr.io/xthanos/slack-handler" # {"$imagepolicy": "flux-system:slack-handler:name"}
-      tag: "10000000000000" # {"$imagepolicy": "flux-system:slack-handler:tag"}
+      tag: "10000000000001" # {"$imagepolicy": "flux-system:slack-handler:tag"}
     replicaCount: 1
     ingress:
       enabled: false
