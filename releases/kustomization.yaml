@@ -8,5 +8,6 @@ resources:
 - mysql/mysql.yaml
 - monolith.yaml
 - flagger-gater.yaml
+- slack-handler.yaml
 - microservices
 - custom-resources
