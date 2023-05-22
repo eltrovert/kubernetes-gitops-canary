@@ -47,3 +47,16 @@ spec:
       maxReplicas: 1
     ingress:
       enabled: true
+      className: "nginx"
+      annotations: {}
+      hosts:
+        - host: monolith.geekinthecloud.xyz
+          http:
+            paths:
+              - backend:
+                  service:
+                    name: monolith
+                    port:
+                      name: http
+                path: /
+                pathType: ImplementationSpecific
