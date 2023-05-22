@@ -61,7 +61,7 @@ spec:
       - name: "promotion-confirmation"
         type: confirm-promotion
         # url: http://flagger-gater.gitops-app/api/canary/nodejs-header-blocker/gate/promotion/check
-        url: http://flagger-loadtester.flagger-system/gate/halt
+        url: http://flagger-loadtester.flagger-system/gate/approve
       - name: "send-to-slack"
         type: event
         url: http://slack-handler.gitops-app/slack
