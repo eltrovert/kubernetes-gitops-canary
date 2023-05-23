@@ -6,15 +6,9 @@ resources:
 - flagger-system/namespace.yaml
 - flagger-system/flagger.yaml
 - flagger-system/flagger-loadtester.yaml
-
-# App
 - monolith.yaml
 - nodejs-header-blocker.yaml
-
-# Canary
 - custom-resources
-
-# Theo custom service
 - flagger-gater.yaml
-- slack-handler.yaml
-- mysql/mysql.yaml
+# - slack-handler.yaml
+# - mysql/mysql.yaml
