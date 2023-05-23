@@ -15,6 +15,9 @@ metadata:
   name: nodejs-header-blocker
   namespace: flux-system
 spec:
+  filterTags:
+    extract: $ts
+    pattern: '(?P<ts>\d+)-.*'
   imageRepositoryRef:
     name: nodejs-header-blocker
   policy:
