@@ -42,7 +42,7 @@ spec:
   values:
     image:
       repository: "asia.gcr.io/xthanos/nodejs-header-blocker" # {"$imagepolicy": "flux-system:nodejs-header-blocker:name"}
-      tag: "10000000000008-h10m07-gak-ada-perubahan" # {"$imagepolicy": "flux-system:nodejs-header-blocker:tag"}
+      tag: "10000000000009-h05m03-teshilmi" # {"$imagepolicy": "flux-system:nodejs-header-blocker:tag"}
     autoscaling:
       enabled: true
       minReplicas: 1
