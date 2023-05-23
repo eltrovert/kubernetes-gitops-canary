@@ -41,5 +41,12 @@ spec:
       repository: "asia.gcr.io/xthanos/slack-handler" # {"$imagepolicy": "flux-system:slack-handler:name"}
       tag: "10000000000001" # {"$imagepolicy": "flux-system:slack-handler:tag"}
     replicaCount: 1
+    resources:
+      requests:
+        cpu: 20m
+        memory: 128Mi
+      limits:
+        cpu: 20m
+        memory: 128Mi
     ingress:
       enabled: false
