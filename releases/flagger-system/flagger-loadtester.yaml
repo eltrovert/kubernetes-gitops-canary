@@ -18,3 +18,7 @@ spec:
     image:
       repository: ghcr.io/fluxcd/flagger-loadtester
       tag: 0.28.1
+    resources:
+      requests:
+        cpu: 10m
+        memory: 64Mi
