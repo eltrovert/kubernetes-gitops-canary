@@ -57,7 +57,7 @@ spec:
       - name: "promotion-confirmation"
         type: confirm-promotion
         # url: http://flagger-gater.gitops-app/api/canary/nodejs-header-blocker/gate/promotion/check
-        url: http://flagger-loadtester.flagger-system/gate/approve
+        url: http://flagger-loadtester.flagger-system/gate/halt
       - name: "check-rollback"
         type: rollback
         # url: http://flagger-gater.gitops-app/api/canary/nodejs-header-blocker/gate/rollback/check
