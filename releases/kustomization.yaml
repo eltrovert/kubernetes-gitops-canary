@@ -10,5 +10,5 @@ resources:
 - nodejs-header-blocker.yaml
 - custom-resources
 - flagger-gater.yaml
-# - slack-handler.yaml
-# - mysql/mysql.yaml
+- slack-handler.yaml
+- mysql/mysql.yaml
