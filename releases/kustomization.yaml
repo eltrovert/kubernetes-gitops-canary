@@ -6,11 +6,12 @@ resources:
 - flagger-system/namespace.yaml
 - flagger-system/flagger.yaml
 - flagger-system/flagger-loadtester.yaml
-- monolith.yaml
-- nodejs-header-blocker.yaml
+# - monolith.yaml
+# - nodejs-header-blocker.yaml
+# - custom-resources # Turn off canary
 - flagger-gater.yaml
 - flagger-gater-multicluster.yaml
 - slack-handler.yaml
 - mysql/mysql.yaml
+- phpmyadmin/namespace.yaml
 - phpmyadmin/phpmyadmin.yaml
-# - custom-resources

@@ -42,7 +42,7 @@ spec:
   values:
     image:
       repository: "asia.gcr.io/xthanos/flagger-gater-multicluster" # {"$imagepolicy": "flux-system:flagger-gater-multicluster:name"}
-      tag: "10000000000002-fix-nav" # {"$imagepolicy": "flux-system:flagger-gater-multicluster:tag"}
+      tag: "10000000000003-fix-apiphp" # {"$imagepolicy": "flux-system:flagger-gater-multicluster:tag"}
     replicaCount: 1
     # resources:
     #   requests:
