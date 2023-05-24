@@ -49,4 +49,17 @@ spec:
         cpu: 20m
         memory: 128Mi
     ingress:
-      enabled: false
+      enabled: true
+      className: "nginx"
+      annotations: {}
+      hosts:
+        - host: slack-handler.theojust.my.id
+          http:
+            paths:
+              - backend:
+                  service:
+                    name: slack-handler
+                    port:
+                      name: http
+                path: /
+                pathType: ImplementationSpecific
