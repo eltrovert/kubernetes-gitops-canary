@@ -327,11 +327,11 @@ service:
   ## @param service.ports.http Service HTTP port
   ## @param service.ports.https Service HTTPS port
   ##
-  port: 80
-  targetPort: 80
-  # ports:
-  #   http: 80
-  #   https: 443
+  # port: 80
+  # targetPort: 80
+  ports:
+    http: 80
+    https: 443
 
 
     

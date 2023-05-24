@@ -24,11 +24,11 @@ spec:
         password: "fImProuAxb" # export MYSQL_PASSWORD=$(kubectl get secret -n mysql mysql -o jsonpath="{.data.mysql-password}" | base64 --decode)
     ingress:
       enabled: true
-      className: "nginx"
+      ingressClassName: "nginx"
       annotations: {}
       hostname: x.thanos.my.id 
-      hosts:
-        - host: x.thanos.my.id
+      # hosts:
+      #   - host: x.thanos.my.id
           # http:
           #   paths:
           #     - backend:
