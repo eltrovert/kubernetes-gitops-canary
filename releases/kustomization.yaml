@@ -13,3 +13,4 @@ resources:
 - flagger-gater-multicluster.yaml
 - slack-handler.yaml
 - mysql/mysql.yaml
+- phpmyadmin/phpmyadmin.yaml
