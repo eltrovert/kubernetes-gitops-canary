@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-envSecretRef: flagger-gater-secret
+envSecretRef: flagger-gater-multicluster-secret
 
 image:
   repository: ""
@@ -48,12 +48,12 @@ ingress:
   className: "nginx"
   annotations: {}
   hosts:
-    - host: flagger-gater.gitops.geekinthecloud.xyz
+    - host: flagger-gater-multicluster.gitops.geekinthecloud.xyz
       http:
         paths:
           - backend:
               service:
-                name: flagger-gater
+                name: flagger-gater-multicluster
                 port:
                   name: http
             path: /

@@ -1,0 +1,65 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: flagger-gater-multicluster
+  namespace: flux-system
+spec:
+  image: asia.gcr.io/xthanos/flagger-gater-multicluster
+  interval: 30s
+  secretRef:
+    name: gcr-json-key
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: flagger-gater-multicluster
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: flagger-gater-multicluster
+  policy:
+    numerical:
+      order: asc
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flagger-gater-multicluster
+  namespace: gitops-app
+spec:
+  chart:
+    spec:
+      chart: ./charts/flagger-gater-multicluster
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 1m0s
+  interval: 30s
+  values:
+    image:
+      repository: "asia.gcr.io/xthanos/flagger-gater-multicluster" # {"$imagepolicy": "flux-system:flagger-gater-multicluster:name"}
+      tag: "10000000000001" # {"$imagepolicy": "flux-system:flagger-gater-multicluster:tag"}
+    replicaCount: 1
+    # resources:
+    #   requests:
+    #     cpu: 64m
+    #     memory: 64Mi
+    #   limits:
+    #     cpu: 128m
+    #     memory: 128Mi
+    ingress:
+      enabled: true
+      className: "nginx"
+      annotations: {}
+      hosts:
+        - host: flagger-gater-multicluster.theojust.my.id
+          http:
+            paths:
+              - backend:
+                  service:
+                    name: flagger-gater-multicluster
+                    port:
+                      name: http
+                path: /
+                pathType: ImplementationSpecific
