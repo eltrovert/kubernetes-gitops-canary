@@ -497,7 +497,6 @@ ingress:
 mysql:
   auth:
     rootPassword: ""
-    Password: ""
 
 
 ## Database configuration
@@ -522,7 +521,7 @@ db:
   ## e.g:
   ## host: foo
   ##
-  host: ""
+  host: 
   ## @param db.bundleTestDB Deploy a MariaDB instance for testing purposes
   ##
   bundleTestDB: false
