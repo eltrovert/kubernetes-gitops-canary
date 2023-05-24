@@ -1,0 +1,24 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: phpmyadmin
+  namespace: phpmyadmin
+spec:
+  interval: 1h
+  releaseName: phpmyadmin
+  chart:
+    spec:
+      chart: ./charts/phpmyadmin
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 6h
+  values:
+    db:
+      host: "http://mysql.mysql"
+    mysql:
+      auth:
+        rootPassword: "12345678" # export MYSQL_ROOT_PASSWORD=$(kubectl get secret -n mysql mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode)
+        password: "fImProuAxb" # export MYSQL_PASSWORD=$(kubectl get secret -n mysql mysql -o jsonpath="{.data.mysql-password}" | base64 --decode)
