@@ -15,6 +15,9 @@ metadata:
   name: flagger-gater-multicluster
   namespace: flux-system
 spec:
+  filterTags:
+    extract: $ts
+    pattern: '(?P<ts>\d+)-.*'
   imageRepositoryRef:
     name: flagger-gater-multicluster
   policy:
