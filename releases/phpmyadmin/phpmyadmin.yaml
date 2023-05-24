@@ -22,5 +22,9 @@ spec:
       auth:
         rootPassword: "12345678" # export MYSQL_ROOT_PASSWORD=$(kubectl get secret -n mysql mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode)
         password: "fImProuAxb" # export MYSQL_PASSWORD=$(kubectl get secret -n mysql mysql -o jsonpath="{.data.mysql-password}" | base64 --decode)
-    networkPolicy:
-      ingress: true
+    ingress:
+      enabled: true
+      className: "nginx"
+      annotations: {}
+      # hosts:
+      #   - host: x.thanos.my.id
