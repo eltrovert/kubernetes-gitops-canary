@@ -48,6 +48,7 @@ spec:
     #   limits:
     #     cpu: 128m
     #     memory: 128Mi
+    envSecretRef: flagger-gater-secret
     ingress:
       enabled: true
       className: "nginx"
