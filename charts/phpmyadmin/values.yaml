@@ -490,11 +490,8 @@ ingress:
 
 ## @section Database parameters
 mysql:
-  
-  auth: ""
-    
+  auth:
     rootPassword: ""
-
     Password: ""
 
 
@@ -607,7 +604,7 @@ metrics:
   service:
     ## @param metrics.service.type Prometheus metrics service type
     ##
-    type: LoadBalancer
+    type: ClusterIP
     ## @param metrics.service.port Prometheus metrics service port
     ##
     port: 9117
