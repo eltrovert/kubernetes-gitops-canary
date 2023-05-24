@@ -26,5 +26,5 @@ spec:
       enabled: true
       className: "nginx"
       annotations: {}
-      # hosts:
-      #   - host: x.thanos.my.id
+      hosts:
+        - host: x.thanos.my.id
