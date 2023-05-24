@@ -26,4 +26,16 @@ spec:
       enabled: true
       className: "nginx"
       annotations: {}
-      hostname: x.thanos.my.id
+      # hostname: 
+      ingress:
+      hosts:
+        - host: x.thanos.my.id
+          # http:
+          #   paths:
+          #     - backend:
+          #         service:
+          #           name: flagger-gater
+          #           port:
+          #             name: http
+          #       path: /
+          #       pathType: ImplementationSpecific
