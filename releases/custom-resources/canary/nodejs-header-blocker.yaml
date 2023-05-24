@@ -56,14 +56,15 @@ spec:
     webhooks:
       - name: "promotion-confirmation"
         type: confirm-promotion
-        # url: http://flagger-gater-multicluster.gitops-app/api/canary/xthanos/gitops-app/nodejs-header-blocker/gate/promotion/check
+        # url: https://flagger-gater-multicluster.gitops-app/api/canary/xthanos/gitops-app/nodejs-header-blocker/gate/promotion/check # Public
         url: http://flagger-loadtester.flagger-system/gate/halt
       - name: "check-rollback"
         type: rollback
-        # url: http://flagger-gater-multicluster.gitops-app/api/canary/xthanos/gitops-app/nodejs-header-blocker/gate/rollback/check
+        # url: https://flagger-gater-multicluster.gitops-app/api/canary/xthanos/gitops-app/nodejs-header-blocker/gate/rollback/check # Public
         url: http://flagger-loadtester.flagger-system/gate/halt
       - name: "send-to-slack"
         type: event
+        # url: https://slack-handler.theojust.my.id/slack # Public
         url: http://slack-handler.gitops-app/slack
         metadata:
           source: "canary"
